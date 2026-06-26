@@ -26,7 +26,7 @@ const PROJECTS = [
       "Documentación técnica completa del proyecto",
     ],
     tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice"],
-    images: ["assets/projects/motor-conmutacion.jpg"],
+    images: ["assets/projects/motor-topologia.jpg", "assets/projects/motor-pid.jpg"],
     link: "",
   },
   {
