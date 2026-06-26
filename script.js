@@ -12,20 +12,21 @@ const PROJECTS = [
     emoji: "⚙️",
     glow: "#2438ff",
     category: "potencia",
-    summary: "Control en lazo cerrado de un motor DC mediante puente en H, con PID y montaje en PCB.",
+    summary: "Control en lazo cerrado de un motor DC mediante puente en H, con caracterización de conmutación y PID.",
     description:
       "Diseño y caracterización del control de un motor DC con un puente en H. Incluye la " +
-      "configuración de los tiempos muertos, el ajuste del lazo cerrado con un controlador PID " +
-      "sobre Arduino y la simulación del modelo promediado en pequeña señal con LTspice. " +
-      "Montaje completo en PCB y documentación técnica del proyecto.",
+      "configuración de los tiempos muertos, la caracterización de la conmutación de los MOSFET, " +
+      "el ajuste del lazo cerrado con un controlador PID sobre Arduino y la simulación del modelo " +
+      "promediado en pequeña señal con LTspice. Documentación técnica completa del proyecto.",
     features: [
       "Configuración de los tiempos muertos del puente en H",
+      "Caracterización de la conmutación de los MOSFET (plateau de Miller)",
       "Control en lazo cerrado (PID) implementado en Arduino",
       "Simulación del modelo promediado en pequeña señal (LTspice)",
-      "Montaje completo en PCB propia",
       "Documentación técnica completa del proyecto",
     ],
-    tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice", "KiCad"],
+    tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice"],
+    images: ["assets/projects/motor-conmutacion.jpg"],
     link: "",
   },
   {
@@ -47,6 +48,7 @@ const PROJECTS = [
       "Montaje y comprobación del prototipo en protoboard",
     ],
     tags: ["Electrónica de potencia", "Convertidor Buck", "DC-DC", "PID", "LTspice", "Arduino"],
+    images: ["assets/projects/buck-montaje.jpg", "assets/projects/buck-bode.jpg"],
     link: "",
   },
   {
@@ -70,6 +72,7 @@ const PROJECTS = [
       "Gestión de periféricos en tiempo real",
     ],
     tags: ["MSP430", "C", "I2C", "ADC", "WiFi", "ESP-01S"],
+    images: ["assets/projects/robot-esquematico.jpg"],
     link: "",
   },
   {
@@ -93,6 +96,7 @@ const PROJECTS = [
       "Proceso XFAB XH018 (180 nm)",
     ],
     tags: ["ASIC", "SystemVerilog", "Cadence", "RTL", "Place & Route", "180 nm"],
+    images: ["assets/projects/fifo-layout.jpg"],
     link: "",
   },
 ];
@@ -127,6 +131,7 @@ function renderProjects(filter = "all") {
         <div class="entry__tags">${p.tags.slice(0, 5).map((t) => `<span class="tag">${t}</span>`).join("")}</div>
       </div>
       <div class="entry__side">
+        ${p.images && p.images.length ? `<div class="entry__thumb"><img src="${p.images[0]}" alt="" loading="lazy"></div>` : ""}
         <span class="entry__arrow">↗</span>
       </div>`;
     row.addEventListener("click", () => openModal(p));
@@ -161,7 +166,9 @@ const modalContent = document.getElementById("modalContent");
 function openModal(p) {
   modalContent.innerHTML = `
     <button class="modal__close" data-close aria-label="Cerrar">Cerrar ×</button>
-    <div class="modal__hero" style="background: radial-gradient(circle at 50% 130%, ${p.glow}33, transparent 62%), var(--paper-2)">${p.emoji}</div>
+    ${p.images && p.images.length
+      ? `<div class="modal__gallery">${p.images.map((src) => `<img src="${src}" alt="${p.title}" loading="lazy">`).join("")}</div>`
+      : `<div class="modal__hero" style="background: radial-gradient(circle at 50% 130%, ${p.glow}33, transparent 62%), var(--paper-2)">${p.emoji}</div>`}
     <div class="modal__inner">
       <p class="modal__kicker">${categoryLabel(p.category)}</p>
       <h3 class="modal__title">${p.title}</h3>
@@ -179,7 +186,20 @@ function categoryLabel(c) {
   return { potencia: "Electrónica de potencia", embedded: "Embedded", digital: "Diseño digital" }[c] || c;
 }
 modal.addEventListener("click", (e) => { if (e.target.dataset.close !== undefined) closeModal(); });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeLightbox(); closeModal(); } });
+
+/* Lightbox para ampliar imágenes de la galería */
+modalContent.addEventListener("click", (e) => {
+  const img = e.target.closest(".modal__gallery img");
+  if (!img) return;
+  const box = document.createElement("div");
+  box.className = "lightbox";
+  box.innerHTML = `<img src="${img.src}" alt="">`;
+  box.addEventListener("click", closeLightbox);
+  document.body.appendChild(box);
+  requestAnimationFrame(() => box.classList.add("is-open"));
+});
+function closeLightbox() { document.querySelectorAll(".lightbox").forEach((b) => b.remove()); }
 
 /* ============ REVEAL ON SCROLL ============ */
 let io;
