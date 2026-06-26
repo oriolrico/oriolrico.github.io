@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Oriol Rico — Ingeniería Electrónica de Telecomunicaciones. Sistemas embebidos, firmware y microcontroladores." />
+  <title>Oriol Rico — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navegación -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand">Oriol&nbsp;Rico</a>
+    <nav class="nav__links">
+      <a href="#work"><span>01</span> Proyectos</a>
+      <a href="#stack"><span>02</span> Stack</a>
+      <a href="#about"><span>03</span> Sobre mí</a>
+      <a href="#contact" class="nav__cta">Contacto</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Menú"><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO / MASTHEAD ============ -->
+    <section class="hero">
+      <div class="hero__meta">
+        <span>Nº 01</span>
+        <span class="hero__rule"></span>
+        <span>Portfolio · Ed. 2026</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line">Oriol</span>
+        <span class="hero__line hero__line--italic">Rico</span>
+      </h1>
+
+      <div class="hero__lower">
+        <p class="hero__role">
+          Ingeniería Electrónica<br />de Telecomunicaciones
+        </p>
+        <p class="hero__intro">
+          Diseño y programo <em>sistemas embebidos</em> — firmware para microcontroladores,
+          electrónica y dispositivos conectados. De la idea al PCB y al código que lo hace funcionar.
+        </p>
+      </div>
+
+      <div class="hero__actions">
+        <a href="#work" class="hero__scroll">
+          <span>Ver proyectos</span>
+          <span class="hero__scroll-arrow">↓</span>
+        </a>
+        <a href="assets/cv-oriol-rico.pdf" class="hero__cv" download>
+          Descargar CV <span>↓</span>
+        </a>
+      </div>
+
+      <div class="hero__marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>STM32</span><i>✳</i><span>ESP32</span><i>✳</i><span>MSP430</span><i>✳</i>
+          <span>C / C++</span><i>✳</i><span>RTOS</span><i>✳</i><span>I2C · SPI · UART</span><i>✳</i>
+          <span>DMA</span><i>✳</i><span>PCB Design</span><i>✳</i>
+          <span>STM32</span><i>✳</i><span>ESP32</span><i>✳</i><span>MSP430</span><i>✳</i>
+          <span>C / C++</span><i>✳</i><span>RTOS</span><i>✳</i><span>I2C · SPI · UART</span><i>✳</i>
+          <span>DMA</span><i>✳</i><span>PCB Design</span><i>✳</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK ============ -->
+    <section class="work" id="work">
+      <div class="sec-head">
+        <p class="sec-kicker"><span>01</span> Selección de proyectos</p>
+        <h2 class="sec-title">Trabajo<br /><em>seleccionado</em></h2>
+        <div class="filters" id="filters">
+          <button class="filter is-active" data-filter="all">Todos</button>
+          <button class="filter" data-filter="embedded">Embedded</button>
+          <button class="filter" data-filter="iot">IoT</button>
+          <button class="filter" data-filter="robotica">Robótica</button>
+          <button class="filter" data-filter="pcb">PCB</button>
+        </div>
+      </div>
+
+      <div class="work__list" id="projects"><!-- inyectado por script.js --></div>
+    </section>
+
+    <!-- ============ STACK ============ -->
+    <section class="stack" id="stack">
+      <div class="sec-head">
+        <p class="sec-kicker"><span>02</span> Caja de herramientas</p>
+        <h2 class="sec-title">Stack<br /><em>técnico</em></h2>
+      </div>
+      <div class="stack__grid" id="stackGrid"><!-- inyectado por script.js --></div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <p class="sec-kicker"><span>03</span> Sobre mí</p>
+      <blockquote class="about__quote">
+        Me apasiona todo lo que vive <em>entre el hardware y el software</em>:
+        diseñar el circuito, configurar los periféricos y escribir el firmware que da vida a un dispositivo.
+      </blockquote>
+      <div class="about__cols">
+        <div class="about__portrait">
+          <span class="about__initials">OR</span>
+          <span class="about__caption">Telecom · Embedded</span>
+        </div>
+        <div class="about__body">
+          <p>
+            Soy estudiante de <strong>Ingeniería Electrónica de Telecomunicaciones</strong>.
+            Trabajo a bajo nivel con microcontroladores <strong>STM32, ESP32 y MSP430</strong>,
+            programando en C/C++ — interrupciones, DMA, I2C/SPI/UART, ADC y RTOS.
+          </p>
+          <p>
+            También monto herramientas host-side en Python y documento mis proyectos con
+            informes técnicos. Me gusta cuidar tanto el detalle del enrutado de una PCB
+            como la limpieza del código que corre encima.
+          </p>
+          <ul class="about__list">
+            <li>Firmware bare-metal y con RTOS</li>
+            <li>Protocolos: I2C · SPI · UART · WiFi · BLE</li>
+            <li>Diseño de PCB y prototipado</li>
+            <li>Depuración con osciloscopio y analizador lógico</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <p class="contact__kicker">¿Hablamos?</p>
+      <h2 class="contact__title">Construyamos<br />algo <em>juntos</em></h2>
+      <p class="contact__lead">
+        ¿Un proyecto de electrónica o firmware en mente? Abierto a colaboraciones, prácticas y nuevos retos.
+      </p>
+      <div class="contact__links">
+        <a href="mailto:oriolrico123@gmail.com" class="contact__link">
+          <small>Email</small><span>oriolrico123@gmail.com</span>
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="contact__link">
+          <small>GitHub</small><span>github.com/tu-usuario →</span>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="contact__link">
+          <small>LinkedIn</small><span>linkedin.com/in/tu-perfil →</span>
+        </a>
+        <a href="assets/cv-oriol-rico.pdf" download class="contact__link">
+          <small>Currículum</small><span>Descargar CV ↓</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Oriol Rico</span>
+    <span>Hecho con C, café y curiosidad</span>
+    <a href="#top">Volver arriba ↑</a>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true">
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
