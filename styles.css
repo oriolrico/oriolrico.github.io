@@ -243,7 +243,7 @@ em { font-style: italic; }
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000, transparent 75%);
 }
 .contact > * { position: relative; z-index: 1; }
-.contact__kicker { font-family: var(--mono); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; opacity: 0.8; }
+.contact__kicker { font-family: var(--fr); font-style: italic; font-size: clamp(2.2rem, 6vw, 4rem); letter-spacing: -0.02em; margin-bottom: 40px; }
 .contact__title { font-family: var(--fr); font-weight: 500; font-size: clamp(2.8rem, 9vw, 7rem); line-height: 0.92; letter-spacing: -0.03em; margin: 14px 0 22px; }
 .contact__title em { font-style: italic; }
 .contact__lead { max-width: 460px; margin: 0 auto 48px; font-size: 1.1rem; opacity: 0.9; }

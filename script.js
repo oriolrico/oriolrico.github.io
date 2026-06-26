@@ -1,22 +1,67 @@
 /* =========================================================
    DATOS DE PROYECTOS  ·  edita este array
    Campos: title, year, emoji, glow, category
-           (embedded | iot | robotica | pcb),
+           (potencia | embedded | digital),
            summary, description, features[], tags[], link
    ========================================================= */
 const PROJECTS = [
   {
-    id: "robot-mise",
-    title: "Robot MiSE",
+    id: "motor-dc-puente-h",
+    title: "Control de motor DC con puente en H",
+    year: "2025",
+    emoji: "⚙️",
+    glow: "#2438ff",
+    category: "potencia",
+    summary: "Control en lazo cerrado de un motor DC mediante puente en H, con PID y montaje en PCB.",
+    description:
+      "Diseño y caracterización del control de un motor DC con un puente en H. Incluye la " +
+      "configuración de los tiempos muertos, el ajuste del lazo cerrado con un controlador PID " +
+      "sobre Arduino y la simulación del modelo promediado en pequeña señal con LTspice. " +
+      "Montaje completo en PCB y documentación técnica del proyecto.",
+    features: [
+      "Configuración de los tiempos muertos del puente en H",
+      "Control en lazo cerrado (PID) implementado en Arduino",
+      "Simulación del modelo promediado en pequeña señal (LTspice)",
+      "Montaje completo en PCB propia",
+      "Documentación técnica completa del proyecto",
+    ],
+    tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice", "KiCad"],
+    link: "",
+  },
+  {
+    id: "convertidor-buck",
+    title: "Convertidor Buck DC-DC",
+    year: "2025",
+    emoji: "⚡",
+    glow: "#ff5a2c",
+    category: "potencia",
+    summary: "Convertidor reductor DC-DC diseñado, simulado y caracterizado en lazo cerrado.",
+    description:
+      "Diseño y caracterización de un convertidor Buck (reductor) DC-DC. Simulación del " +
+      "comportamiento en LTspice, ajuste del lazo cerrado con un controlador PID sobre Arduino " +
+      "y validación del prototipo montado en protoboard.",
+    features: [
+      "Diseño del convertidor Buck DC-DC",
+      "Simulaciones en LTspice",
+      "Caracterización del lazo cerrado (PID) en Arduino",
+      "Montaje y comprobación del prototipo en protoboard",
+    ],
+    tags: ["Electrónica de potencia", "Convertidor Buck", "DC-DC", "PID", "LTspice", "Arduino"],
+    link: "",
+  },
+  {
+    id: "robot-movil",
+    title: "Robot móvil teledirigido",
     year: "2026",
     emoji: "🤖",
     glow: "#2438ff",
-    category: "robotica",
-    summary: "Robot móvil sobre MSP430FR2355 con control inalámbrico WiFi y sensores integrados.",
+    category: "embedded",
+    summary: "Robot móvil sobre MSP430FR2355 con sensores integrados y control inalámbrico por WiFi.",
     description:
-      "Firmware completo para un robot móvil basado en el microcontrolador MSP430FR2355. " +
-      "Integra múltiples periféricos y un protocolo de comunicación inalámbrica para controlar " +
-      "actuadores Bioloid mediante un módulo ESP-01S sobre WiFi.",
+      "Firmware para un robot móvil basado en el microcontrolador MSP430FR2355. Integra lectura " +
+      "de sensores por I2C y ADC, un sensor de ultrasonidos para detección de obstáculos y control " +
+      "mediante joystick analógico. La comunicación con los actuadores Bioloid se realiza de forma " +
+      "inalámbrica a través de un módulo ESP-01S por WiFi.",
     features: [
       "Lectura de sensores por I2C y ADC",
       "Sensor de ultrasonidos para detección de obstáculos",
@@ -24,76 +69,42 @@ const PROJECTS = [
       "Comunicación WiFi con servos Bioloid vía ESP-01S",
       "Gestión de periféricos en tiempo real",
     ],
-    tags: ["MSP430", "C", "I2C", "ADC", "WiFi", "ESP-01S", "Bioloid"],
+    tags: ["MSP430", "C", "I2C", "ADC", "WiFi", "ESP-01S"],
     link: "",
   },
   {
-    id: "stm32-template",
-    title: "Proyecto STM32",
+    id: "chip-fifo-asic",
+    title: "Chip FIFO digital — Flujo ASIC",
     year: "2025",
-    emoji: "⚙️",
-    glow: "#2438ff",
-    category: "embedded",
-    summary: "Plantilla de ejemplo — sustitúyela por un proyecto real con STM32.",
-    description:
-      "Describe aquí un proyecto basado en STM32: qué hace, qué problema resuelve y qué " +
-      "periféricos usa (timers, DMA, UART...). Borra o edita esta entrada cuando quieras.",
-    features: [
-      "Configuración de periféricos con HAL / registros",
-      "Manejo de interrupciones (ISR)",
-      "Transferencias por DMA",
-    ],
-    tags: ["STM32", "C", "DMA", "UART", "Timers"],
-    link: "",
-  },
-  {
-    id: "esp32-iot",
-    title: "Nodo IoT ESP32",
-    year: "2025",
-    emoji: "📡",
+    emoji: "🔲",
     glow: "#ff5a2c",
-    category: "iot",
-    summary: "Plantilla de ejemplo — dispositivo conectado con ESP32 y envío de datos.",
+    category: "digital",
+    summary: "Diseño de un chip FIFO digital con flujo ASIC completo, de RTL hasta layout para foundry.",
     description:
-      "Ejemplo de nodo IoT con ESP32: lectura de sensores, conexión WiFi/MQTT y envío de " +
-      "telemetría a un servidor o dashboard. Personaliza esta entrada con tu proyecto.",
+      "Diseño de un chip FIFO digital siguiendo el flujo ASIC completo (RTL → Foundry) sobre el " +
+      "proceso XFAB XH018 (180 nm). Descripción RTL en SystemVerilog con verificación mediante " +
+      "testbench autoverificable (scoreboard), síntesis lógica, DFT/ATPG y Place & Route hasta " +
+      "obtener el layout listo para fabricación.",
     features: [
-      "Conectividad WiFi y MQTT",
-      "Lectura periódica de sensores",
-      "Bajo consumo (deep sleep)",
+      "RTL en SystemVerilog + testbench autoverificable (scoreboard)",
+      "Síntesis lógica con Genus",
+      "DFT / ATPG con Modus",
+      "Place & Route hasta layout con Innovus",
+      "Proceso XFAB XH018 (180 nm)",
     ],
-    tags: ["ESP32", "C++", "WiFi", "MQTT", "FreeRTOS"],
-    link: "",
-  },
-  {
-    id: "pcb-design",
-    title: "Diseño de PCB",
-    year: "2024",
-    emoji: "🔌",
-    glow: "#2438ff",
-    category: "pcb",
-    summary: "Plantilla de ejemplo — diseño de placa de circuito impreso.",
-    description:
-      "Ejemplo de proyecto de hardware: esquemático y layout de una PCB. Indica la herramienta " +
-      "(KiCad, Altium...), el propósito de la placa y los retos del enrutado.",
-    features: [
-      "Esquemático y selección de componentes",
-      "Layout y enrutado de la PCB",
-      "Verificación DRC y fabricación",
-    ],
-    tags: ["KiCad", "PCB", "Hardware", "Electrónica"],
+    tags: ["ASIC", "SystemVerilog", "Cadence", "RTL", "Place & Route", "180 nm"],
     link: "",
   },
 ];
 
 /* Stack técnico */
 const STACK = [
-  { group: "Lenguajes", items: ["C", "C++", "Python", "Assembly"] },
-  { group: "Microcontroladores", items: ["STM32", "ESP32", "MSP430", "Arduino"] },
-  { group: "Protocolos", items: ["I2C", "SPI", "UART", "ADC", "PWM"] },
-  { group: "Conectividad", items: ["WiFi", "Bluetooth", "MQTT"] },
-  { group: "Real-time", items: ["FreeRTOS", "ISR", "DMA", "Bare-metal"] },
-  { group: "Herramientas", items: ["KiCad", "Git", "Osciloscopio"] },
+  { group: "Lenguajes & HDL", items: ["C", "Python", "Verilog", "SystemVerilog"] },
+  { group: "Electrónica de potencia", items: ["Convertidores DC-DC", "Puente en H", "Control PID"] },
+  { group: "Diseño PCB & Simulación", items: ["KiCad", "LTspice", "Selección de componentes"] },
+  { group: "Flujo ASIC / EDA", items: ["Cadence Xcelium", "Genus", "Innovus", "Modus"] },
+  { group: "Microcontroladores", items: ["MSP430", "Arduino", "ESP-01S"] },
+  { group: "Laboratorio", items: ["Osciloscopio", "Multímetro", "Soldadura THT/SMD"] },
 ];
 
 /* ============ RENDER PROYECTOS (entradas) ============ */
@@ -166,7 +177,7 @@ function openModal(p) {
 }
 function closeModal() { modal.classList.remove("is-open"); document.body.style.overflow = ""; }
 function categoryLabel(c) {
-  return { embedded: "Embedded", iot: "IoT", robotica: "Robótica", pcb: "PCB" }[c] || c;
+  return { potencia: "Electrónica de potencia", embedded: "Embedded", digital: "Diseño digital" }[c] || c;
 }
 modal.addEventListener("click", (e) => { if (e.target.dataset.close !== undefined) closeModal(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });

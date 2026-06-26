@@ -13,7 +13,7 @@
 <body>
   <!-- Navegación -->
   <header class="nav" id="nav">
-    <a href="#top" class="nav__brand">Oriol&nbsp;Rico</a>
+    <a href="#top" class="nav__brand">Oriol&nbsp;Rico&nbsp;Vilar</a>
     <nav class="nav__links">
       <a href="#work"><span>01</span> Proyectos</a>
       <a href="#stack"><span>02</span> Stack</a>
@@ -34,16 +34,17 @@
 
       <h1 class="hero__title">
         <span class="hero__line">Oriol</span>
-        <span class="hero__line hero__line--italic">Rico</span>
+        <span class="hero__line hero__line--italic">Rico Vilar</span>
       </h1>
 
       <div class="hero__lower">
         <p class="hero__role">
-          Ingeniería Electrónica<br />de Telecomunicaciones
+          Ingeniería Electrónica<br />de Telecomunicación
         </p>
         <p class="hero__intro">
-          Diseño y programo <em>sistemas embebidos</em> — firmware para microcontroladores,
-          electrónica y dispositivos conectados. De la idea al PCB y al código que lo hace funcionar.
+          Me apasiona la <em>electrónica de potencia</em> — convertidores DC-DC, control de motores
+          y lazos de regulación. Diseño PCBs, simulo circuitos y trabajo el diseño digital, de la
+          idea al prototipo que funciona.
         </p>
       </div>
 
@@ -59,12 +60,12 @@
 
       <div class="hero__marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span>STM32</span><i>✳</i><span>ESP32</span><i>✳</i><span>MSP430</span><i>✳</i>
-          <span>C / C++</span><i>✳</i><span>RTOS</span><i>✳</i><span>I2C · SPI · UART</span><i>✳</i>
-          <span>DMA</span><i>✳</i><span>PCB Design</span><i>✳</i>
-          <span>STM32</span><i>✳</i><span>ESP32</span><i>✳</i><span>MSP430</span><i>✳</i>
-          <span>C / C++</span><i>✳</i><span>RTOS</span><i>✳</i><span>I2C · SPI · UART</span><i>✳</i>
-          <span>DMA</span><i>✳</i><span>PCB Design</span><i>✳</i>
+          <span>Electrónica de potencia</span><i>✳</i><span>Diseño PCB</span><i>✳</i><span>KiCad</span><i>✳</i>
+          <span>LTspice</span><i>✳</i><span>Convertidores DC-DC</span><i>✳</i><span>Control PID</span><i>✳</i>
+          <span>C · Python</span><i>✳</i><span>Verilog</span><i>✳</i><span>Flujo ASIC</span><i>✳</i>
+          <span>Electrónica de potencia</span><i>✳</i><span>Diseño PCB</span><i>✳</i><span>KiCad</span><i>✳</i>
+          <span>LTspice</span><i>✳</i><span>Convertidores DC-DC</span><i>✳</i><span>Control PID</span><i>✳</i>
+          <span>C · Python</span><i>✳</i><span>Verilog</span><i>✳</i><span>Flujo ASIC</span><i>✳</i>
         </div>
       </div>
     </section>
@@ -76,10 +77,9 @@
         <h2 class="sec-title">Trabajo<br /><em>seleccionado</em></h2>
         <div class="filters" id="filters">
           <button class="filter is-active" data-filter="all">Todos</button>
+          <button class="filter" data-filter="potencia">Potencia</button>
           <button class="filter" data-filter="embedded">Embedded</button>
-          <button class="filter" data-filter="iot">IoT</button>
-          <button class="filter" data-filter="robotica">Robótica</button>
-          <button class="filter" data-filter="pcb">PCB</button>
+          <button class="filter" data-filter="digital">Digital</button>
         </div>
       </div>
 
@@ -99,30 +99,30 @@
     <section class="about" id="about">
       <p class="sec-kicker"><span>03</span> Sobre mí</p>
       <blockquote class="about__quote">
-        Me apasiona todo lo que vive <em>entre el hardware y el software</em>:
-        diseñar el circuito, configurar los periféricos y escribir el firmware que da vida a un dispositivo.
+        Lo que más me atrae es la <em>electrónica de potencia</em>: diseñar el circuito,
+        simular el lazo de control y verlo funcionar montado en una PCB.
       </blockquote>
       <div class="about__cols">
         <div class="about__portrait">
           <span class="about__initials">OR</span>
-          <span class="about__caption">Telecom · Embedded</span>
+          <span class="about__caption">Potencia · PCB · Digital</span>
         </div>
         <div class="about__body">
           <p>
-            Soy estudiante de <strong>Ingeniería Electrónica de Telecomunicaciones</strong>.
-            Trabajo a bajo nivel con microcontroladores <strong>STM32, ESP32 y MSP430</strong>,
-            programando en C/C++ — interrupciones, DMA, I2C/SPI/UART, ADC y RTOS.
+            Soy estudiante de 3º de <strong>Ingeniería Electrónica de Telecomunicación</strong> en la
+            Universidad de Barcelona. Me interesa especialmente la <strong>electrónica de potencia</strong>
+            — convertidores DC-DC, control de motores y lazos de regulación — incluso más que los sistemas embebidos.
           </p>
           <p>
-            También monto herramientas host-side en Python y documento mis proyectos con
-            informes técnicos. Me gusta cuidar tanto el detalle del enrutado de una PCB
-            como la limpieza del código que corre encima.
+            Tengo experiencia práctica en diseño de PCBs con KiCad, simulación de circuitos con LTspice,
+            programación de microcontroladores en C y diseño digital con HDL (Verilog/SystemVerilog),
+            incluido un flujo ASIC completo. Busco prácticas donde aportar en proyectos de alto impacto tecnológico.
           </p>
           <ul class="about__list">
-            <li>Firmware bare-metal y con RTOS</li>
-            <li>Protocolos: I2C · SPI · UART · WiFi · BLE</li>
-            <li>Diseño de PCB y prototipado</li>
-            <li>Depuración con osciloscopio y analizador lógico</li>
+            <li>Electrónica de potencia: convertidores DC-DC y control de motores</li>
+            <li>Diseño y montaje de PCBs (KiCad · soldadura THT/SMD)</li>
+            <li>Simulación de circuitos con LTspice</li>
+            <li>Diseño digital y flujo ASIC (Verilog/SystemVerilog)</li>
           </ul>
         </div>
       </div>
@@ -130,14 +130,13 @@
 
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact">
-      <p class="contact__kicker">¿Hablamos?</p>
-      <h2 class="contact__title">Construyamos<br />algo <em>juntos</em></h2>
-      <p class="contact__lead">
-        ¿Un proyecto de electrónica o firmware en mente? Abierto a colaboraciones, prácticas y nuevos retos.
-      </p>
+      <p class="contact__kicker">Contacto</p>
       <div class="contact__links">
         <a href="mailto:oriolrico123@gmail.com" class="contact__link">
           <small>Email</small><span>oriolrico123@gmail.com</span>
+        </a>
+        <a href="tel:+34642320001" class="contact__link">
+          <small>Teléfono</small><span>642 320 001</span>
         </a>
         <a href="https://github.com/" target="_blank" rel="noopener" class="contact__link">
           <small>GitHub</small><span>github.com/tu-usuario →</span>
@@ -153,7 +152,7 @@
   </main>
 
   <footer class="footer">
-    <span>© <span id="year"></span> Oriol Rico</span>
+    <span>© <span id="year"></span> Oriol Rico Vilar</span>
     <span>Hecho con C, café y curiosidad</span>
     <a href="#top">Volver arriba ↑</a>
   </footer>
