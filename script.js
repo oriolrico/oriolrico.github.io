@@ -27,7 +27,6 @@ const PROJECTS = [
     ],
     tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice"],
     images: ["assets/projects/motor-conmutacion.jpg"],
-    report: "assets/reports/motor-memoria.pdf",
     link: "",
   },
   {
@@ -50,7 +49,6 @@ const PROJECTS = [
     ],
     tags: ["Electrónica de potencia", "Convertidor Buck", "DC-DC", "PID", "LTspice", "Arduino"],
     images: ["assets/projects/buck-montaje.jpg", "assets/projects/buck-bode.jpg"],
-    report: "assets/reports/buck-memoria.pdf",
     link: "",
   },
   {
@@ -75,7 +73,6 @@ const PROJECTS = [
     ],
     tags: ["MSP430", "C", "I2C", "ADC", "WiFi", "ESP-01S"],
     images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-esquematico.jpg"],
-    report: "assets/reports/robot-memoria.pdf",
     link: "",
   },
   {
@@ -179,10 +176,7 @@ function openModal(p) {
       <h4>Características</h4>
       <ul class="modal__features">${p.features.map((f) => `<li>${f}</li>`).join("")}</ul>
       <div class="modal__tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
-      <div class="modal__actions">
-        ${p.report ? `<a class="modal__cta" href="${p.report}" target="_blank" rel="noopener">📄 Ver memoria técnica (PDF)</a>` : ""}
-        ${p.link ? `<a class="modal__cta modal__cta--ghost" href="${p.link}" target="_blank" rel="noopener">Ver proyecto →</a>` : ""}
-      </div>
+      ${p.link ? `<div class="modal__actions"><a class="modal__cta" href="${p.link}" target="_blank" rel="noopener">Ver proyecto →</a></div>` : ""}
     </div>`;
   modal.classList.add("is-open");
   document.body.style.overflow = "hidden";
