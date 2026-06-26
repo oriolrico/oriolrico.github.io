@@ -127,7 +127,6 @@ function renderProjects(filter = "all") {
         <div class="entry__tags">${p.tags.slice(0, 5).map((t) => `<span class="tag">${t}</span>`).join("")}</div>
       </div>
       <div class="entry__side">
-        <span class="entry__year">${p.year}</span>
         <span class="entry__arrow">↗</span>
       </div>`;
     row.addEventListener("click", () => openModal(p));
@@ -164,7 +163,7 @@ function openModal(p) {
     <button class="modal__close" data-close aria-label="Cerrar">Cerrar ×</button>
     <div class="modal__hero" style="background: radial-gradient(circle at 50% 130%, ${p.glow}33, transparent 62%), var(--paper-2)">${p.emoji}</div>
     <div class="modal__inner">
-      <p class="modal__kicker">${categoryLabel(p.category)} · ${p.year}</p>
+      <p class="modal__kicker">${categoryLabel(p.category)}</p>
       <h3 class="modal__title">${p.title}</h3>
       <p class="lead">${p.description}</p>
       <h4>Características</h4>
