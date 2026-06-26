@@ -14,10 +14,17 @@ const PROJECTS = [
     category: "potencia",
     summary: "Control en lazo cerrado de un motor DC mediante puente en H, con caracterización de conmutación y PID.",
     description:
-      "Diseño y caracterización del control de un motor DC con un puente en H. Incluye la " +
-      "configuración de los tiempos muertos, la caracterización de la conmutación de los MOSFET, " +
-      "el ajuste del lazo cerrado con un controlador PID sobre Arduino y la simulación del modelo " +
-      "promediado en pequeña señal con LTspice. Documentación técnica completa del proyecto.",
+      "Análisis y control de velocidad de un motor DC de escobillas mediante una etapa de potencia " +
+      "en puente en H. Partiendo del modelo electromecánico del motor (dominios eléctrico y mecánico, " +
+      "fuerza contraelectromotriz, constante de tiempo eléctrica ~170 µs frente a la mecánica ~100 ms), " +
+      "se estudió la topología del puente con cuatro MOSFET de canal N y sus modos de operación " +
+      "slow-decay y fast-decay, incluida la generación de PWM a 32 kHz y la gestión de los tiempos " +
+      "muertos (dead-time) para evitar el shoot-through. Se modeló todo el conjunto en LTspice y, " +
+      "aplicando el método del modelo promediado de la célula PWM de tres terminales, se extrajo la " +
+      "función de transferencia en lazo abierto y se diseñó gráficamente un controlador PID " +
+      "(superposición de P(s) y 1/C(s) en el diagrama de Bode, cruce a 20 dB/déc y margen de fase " +
+      "~45°). Finalmente se verificó el lazo cerrado en régimen estacionario y dinámico frente a " +
+      "perturbaciones de carga.",
     features: [
       "Configuración de los tiempos muertos del puente en H",
       "Caracterización de la conmutación de los MOSFET (plateau de Miller)",
@@ -38,9 +45,18 @@ const PROJECTS = [
     category: "potencia",
     summary: "Convertidor reductor DC-DC diseñado, simulado y caracterizado en lazo cerrado.",
     description:
-      "Diseño y caracterización de un convertidor Buck (reductor) DC-DC. Simulación del " +
-      "comportamiento en LTspice, ajuste del lazo cerrado con un controlador PID sobre Arduino " +
-      "y validación del prototipo montado en protoboard.",
+      "Diseño, implementación y caracterización completa de un convertidor reductor DC-DC " +
+      "(5 V / 5 W, entrada 10–14 V, conmutación PWM a 32 kHz). El proyecto abarca el dimensionado " +
+      "analítico (duty cycle, inductancia mínima para conducción continua, rizado de corriente y " +
+      "tensión, condensador de filtro, diodo Schottky 1N5819 y MOSFET IRFZ34N con driver high-side " +
+      "IR2301 y condensador de bootstrap), la fabricación y caracterización de la bobina toroidal " +
+      "(~5 mH, medida con el Impedance Analyzer del Analog Discovery 2) y la validación experimental " +
+      "sobre protoboard. Se simuló en LTspice con el modelo promediado de la célula PWM para extraer " +
+      "la función de transferencia en lazo abierto (dos polos complejos del filtro LC y un cero del " +
+      "ESR). Para el lazo cerrado se identificó la planta con el método autotune (relé con histéresis) " +
+      "y se sintonizó un PID digital sobre Arduino Uno por Ziegler-Nichols, con anti-windup y paso de " +
+      "tiempo medido por software, regulando la salida a 5 V con error estacionario inferior al 5 % " +
+      "frente a variaciones de entrada y de carga.",
     features: [
       "Diseño del convertidor Buck DC-DC",
       "Simulaciones en LTspice",
@@ -58,21 +74,28 @@ const PROJECTS = [
     emoji: "🤖",
     glow: "#2438ff",
     category: "embedded",
-    summary: "Robot móvil sobre MSP430FR2355 con sensores integrados y control inalámbrico por WiFi.",
+    summary: "Robot móvil multimodo sobre MSP430FR2355: control manual, seguimiento de línea/luz y ultrasonidos.",
     description:
-      "Firmware para un robot móvil basado en el microcontrolador MSP430FR2355. Integra lectura " +
-      "de sensores por I2C y ADC, un sensor de ultrasonidos para detección de obstáculos y control " +
-      "mediante joystick analógico. La comunicación con los actuadores Bioloid se realiza de forma " +
-      "inalámbrica a través de un módulo ESP-01S por WiFi.",
+      "Robot móvil multimodo gobernado por un microcontrolador MSP430FR2355, con una interfaz local " +
+      "propia —menú en LCD 2×16 navegable con joystick— que permite conmutar entre cuatro modos de " +
+      "funcionamiento: control manual, seguimiento de línea, seguimiento de luz y mantenimiento de " +
+      "distancia por ultrasonidos. El MSP430 actúa como maestro I2C y delega la tracción y los LEDs " +
+      "al robot Maqueen Plus, desacoplando control y potencia. Todos los periféricos (ADC de los LDR, " +
+      "UART, joystick y temporizadores) trabajan por interrupción mientras la CPU permanece en bajo " +
+      "consumo (LPM0) y despierta solo ante eventos, sobre una máquina de estados modular con paradas " +
+      "de seguridad. Incluye sensor de ultrasonidos HC-SR04 (Trigger/Echo medido por timer), dos LDR " +
+      "leídos por ADC de 12 bits y un módulo WiFi ESP-01S integrado por UART para teleoperación remota. " +
+      "El proyecto incluyó además el diseño de la PCB de control que integra todos los periféricos.",
     features: [
-      "Lectura de sensores por I2C y ADC",
-      "Sensor de ultrasonidos para detección de obstáculos",
-      "Control mediante joystick analógico",
-      "Comunicación WiFi con servos Bioloid vía ESP-01S",
-      "Gestión de periféricos en tiempo real",
+      "Interfaz local a bordo: menú en LCD 2×16 + joystick",
+      "Cuatro modos: manual, seguir línea, seguir luz y ultrasonidos",
+      "MSP430 como maestro I2C del robot Maqueen Plus (tracción y LEDs)",
+      "Periféricos por interrupción y bajo consumo (LPM0)",
+      "HC-SR04, LDR por ADC 12-bit y ESP-01S por UART",
+      "Diseño de la PCB de control",
     ],
-    tags: ["MSP430", "C", "I2C", "ADC", "WiFi", "ESP-01S"],
-    images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-esquematico.jpg"],
+    tags: ["MSP430", "C", "I2C", "ADC", "UART", "ESP-01S", "LPM0"],
+    images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-arquitectura.jpg", "assets/projects/robot-esquematico.jpg"],
     link: "",
   },
   {
@@ -84,10 +107,15 @@ const PROJECTS = [
     category: "digital",
     summary: "Diseño de un chip FIFO digital con flujo ASIC completo, de RTL hasta layout para foundry.",
     description:
-      "Diseño de un chip FIFO digital siguiendo el flujo ASIC completo (RTL → Foundry) sobre el " +
-      "proceso XFAB XH018 (180 nm). Descripción RTL en SystemVerilog con verificación mediante " +
-      "testbench autoverificable (scoreboard), síntesis lógica, DFT/ATPG y Place & Route hasta " +
-      "obtener el layout listo para fabricación.",
+      "Diseño de un chip FIFO digital recorriendo el flujo ASIC completo, desde la descripción RTL " +
+      "hasta el layout listo para fabricación (RTL-to-GDSII), sobre el proceso XFAB XH018 (180 nm). " +
+      "El bloque se describió en SystemVerilog y se verificó con un testbench autoverificable basado " +
+      "en scoreboard, que comprueba automáticamente las operaciones de escritura/lectura y las " +
+      "condiciones de FIFO llena y vacía. A continuación se realizó la síntesis lógica con Cadence " +
+      "Genus (mapeo a la librería de celdas estándar y restricciones de temporización / STA), la " +
+      "inserción de test y generación de patrones DFT/ATPG con Modus, y el Place & Route con Innovus " +
+      "—floorplan, anillo de alimentación, colocación, árbol de reloj (CTS) y enrutado— integrando las " +
+      "macros de memoria RAM hasta obtener el layout final verificado.",
     features: [
       "RTL en SystemVerilog + testbench autoverificable (scoreboard)",
       "Síntesis lógica con Genus",
