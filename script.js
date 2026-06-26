@@ -94,7 +94,7 @@ const PROJECTS = [
       "Periféricos por interrupción y bajo consumo (LPM0)",
     ],
     tags: ["MSP430", "C", "I2C", "ADC", "UART", "ESP-01S", "LPM0"],
-    images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-arquitectura.jpg", "assets/projects/robot-esquematico.jpg"],
+    images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-arquitectura.jpg", "assets/projects/robot-layout.jpg"],
     link: "",
   },
   {
