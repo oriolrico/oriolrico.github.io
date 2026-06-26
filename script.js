@@ -8,7 +8,7 @@ const PROJECTS = [
   {
     id: "motor-dc-puente-h",
     title: "Control de motor DC con puente en H",
-    year: "2025",
+    year: "2026",
     emoji: "⚙️",
     glow: "#2438ff",
     category: "potencia",
@@ -19,7 +19,7 @@ const PROJECTS = [
       "fuerza contraelectromotriz, constante de tiempo eléctrica ~170 µs frente a la mecánica ~100 ms), " +
       "se estudió la topología del puente con cuatro MOSFET de canal N y sus modos de operación " +
       "slow-decay y fast-decay, incluida la generación de PWM a 32 kHz y la gestión de los tiempos " +
-      "muertos (dead-time) para evitar el shoot-through. Se modeló todo el conjunto en LTspice y, " +
+      "muertos para evitar el shoot-through. Se modeló todo el conjunto en LTspice y, " +
       "aplicando el método del modelo promediado de la célula PWM de tres terminales, se extrajo la " +
       "función de transferencia en lazo abierto y se diseñó gráficamente un controlador PID " +
       "(superposición de P(s) y 1/C(s) en el diagrama de Bode, cruce a 20 dB/déc y margen de fase " +
@@ -27,19 +27,19 @@ const PROJECTS = [
       "perturbaciones de carga.",
     features: [
       "Configuración de los tiempos muertos del puente en H",
-      "Caracterización de la conmutación de los MOSFET (plateau de Miller)",
+      "Montaje de la PCB + comprovación de los componentes",
       "Control en lazo cerrado (PID) implementado en Arduino",
       "Simulación del modelo promediado en pequeña señal (LTspice)",
       "Documentación técnica completa del proyecto",
     ],
-    tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice"],
+    tags: ["Electrónica de potencia", "Puente en H", "PID", "Arduino", "LTspice", "AD2"],
     images: ["assets/projects/motor-montaje.jpg", "assets/projects/motor-pid.jpg"],
     link: "",
   },
   {
     id: "convertidor-buck",
     title: "Convertidor Buck DC-DC",
-    year: "2025",
+    year: "2026",
     emoji: "⚡",
     glow: "#ff5a2c",
     category: "potencia",
@@ -63,7 +63,7 @@ const PROJECTS = [
       "Caracterización del lazo cerrado (PID) en Arduino",
       "Montaje y comprobación del prototipo en protoboard",
     ],
-    tags: ["Electrónica de potencia", "Convertidor Buck", "DC-DC", "PID", "LTspice", "Arduino"],
+    tags: ["Electrónica de potencia", "Convertidor Buck", "DC-DC", "PID", "LTspice", "Arduino","AD2"],
     images: ["assets/projects/buck-montaje.jpg", "assets/projects/buck-bode.jpg"],
     link: "",
   },
@@ -77,22 +77,21 @@ const PROJECTS = [
     summary: "Robot móvil multimodo sobre MSP430FR2355: control manual, seguimiento de línea/luz y ultrasonidos.",
     description:
       "Robot móvil multimodo gobernado por un microcontrolador MSP430FR2355, con una interfaz local " +
-      "propia —menú en LCD 2×16 navegable con joystick— que permite conmutar entre cuatro modos de " +
+      "propia (menú en LCD 2×16 navegable con joystick) que permite conmutar entre cuatro modos de " +
       "funcionamiento: control manual, seguimiento de línea, seguimiento de luz y mantenimiento de " +
       "distancia por ultrasonidos. El MSP430 actúa como maestro I2C y delega la tracción y los LEDs " +
       "al robot Maqueen Plus, desacoplando control y potencia. Todos los periféricos (ADC de los LDR, " +
-      "UART, joystick y temporizadores) trabajan por interrupción mientras la CPU permanece en bajo " +
-      "consumo (LPM0) y despierta solo ante eventos, sobre una máquina de estados modular con paradas " +
-      "de seguridad. Incluye sensor de ultrasonidos HC-SR04 (Trigger/Echo medido por timer), dos LDR " +
+      "I2C, joystick y temporizadores) trabajan por interrupción mientras la CPU permanece en bajo " +
+      "consumo (LPM0), sobre una máquina de estados modular con paradas de seguridad. " +
+      "Incluye sensor de ultrasonidos HC-SR04 (Trigger/Echo medido por timer), dos LDR " +
       "leídos por ADC de 12 bits y un módulo WiFi ESP-01S integrado por UART para teleoperación remota. " +
       "El proyecto incluyó además el diseño de la PCB de control que integra todos los periféricos.",
     features: [
+      "Diseño de la PCB con los periféricos necesarios",
       "Interfaz local a bordo: menú en LCD 2×16 + joystick",
       "Cuatro modos: manual, seguir línea, seguir luz y ultrasonidos",
-      "MSP430 como maestro I2C del robot Maqueen Plus (tracción y LEDs)",
+      "MSP430 como maestro I2C del robot Maqueen Plus",
       "Periféricos por interrupción y bajo consumo (LPM0)",
-      "HC-SR04, LDR por ADC 12-bit y ESP-01S por UART",
-      "Diseño de la PCB de control",
     ],
     tags: ["MSP430", "C", "I2C", "ADC", "UART", "ESP-01S", "LPM0"],
     images: ["assets/projects/robot-foto.jpg", "assets/projects/robot-arquitectura.jpg", "assets/projects/robot-esquematico.jpg"],
@@ -135,8 +134,8 @@ const STACK = [
   { group: "Electrónica de potencia", items: ["Convertidores DC-DC", "Puente en H", "Control PID"] },
   { group: "Diseño PCB & Simulación", items: ["KiCad", "LTspice", "Selección de componentes"] },
   { group: "Flujo ASIC / EDA", items: ["Cadence Xcelium", "Genus", "Innovus", "Modus"] },
-  { group: "Microcontroladores", items: ["MSP430", "Arduino", "ESP-01S"] },
-  { group: "Laboratorio", items: ["Osciloscopio", "Multímetro", "Soldadura THT/SMD"] },
+  { group: "Microcontroladores", items: ["MSP430", "Arduino", "ESP-01S", "STM32"] },
+  { group: "Laboratorio", items: ["Osciloscopio", "Multímetro", "Analog Discovery 2", "Soldadura THT/SMD"] },
 ];
 
 /* ============ RENDER PROYECTOS (entradas) ============ */
